@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
 )
@@ -71,5 +72,9 @@ func newDeckFromFile(filename string) deck {
 
 // function to shuffle cards
 func (d deck) shuffle() {
-
+	for i := range d {
+		newPosition := rand.Intn(len(d) - 1)
+		// swaping data in slice
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
 }
